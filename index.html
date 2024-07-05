@@ -63,12 +63,16 @@
             display: none;
             height: 100%;
         }
-        .page:target {
+        #home {
             display: flex;
             flex-direction: column;
         }
-        #home:not(:target) {
+        #careers:target {
             display: flex;
+            flex-direction: column;
+        }
+        #careers:target ~ #home {
+            display: none;
         }
         .back-link {
             margin-top: 3vh;
@@ -111,7 +115,7 @@
                 To apply, please send your resume and a brief introduction to <a href="mailto:careers@womplabs.ai">careers@womplabs.ai</a>
             </p>
         </div>
-        <a href="#home" class="back-link">Back to Home</a>
+        <a href="#" class="back-link">Back to Home</a>
     </div>
 </body>
 </html>
