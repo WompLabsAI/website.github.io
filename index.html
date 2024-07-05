@@ -54,21 +54,64 @@
         }
         a {
             color: #00FFFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .page {
+            display: none;
+            height: 100%;
+        }
+        .page:target {
+            display: flex;
+            flex-direction: column;
+        }
+        #home:not(:target) {
+            display: flex;
+        }
+        .back-link {
+            margin-top: 3vh;
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <h1>Womp Labs</h1>
-        <h2>Uncovering strong links between training data and model behaviors.</h2>
-        <p>
-            Data quality is now the largest blocker to scaling AI performance. We train large models on trillions of tokens, but when they fail, finding those responsible is incredibly hard. As a result, edge cases are brutally difficult to mitigate and reliability can be a nightmare. The next OOM of performance will come from progress made on this problem.
-        </p>
+    <div id="home" class="page">
+        <div class="content">
+            <h1>Womp Labs</h1>
+            <h2>Uncovering strong links between training data and model behaviors.</h2>
+            <p>
+                Data quality is now the largest blocker to scaling AI performance. We train large models on trillions of tokens, but when they fail, finding those responsible is incredibly hard. As a result, edge cases are brutally difficult to mitigate and reliability can be a nightmare. The next OOM of performance will come from progress made on this problem.
+            </p>
+        </div>
+        <ul>
+            <li>Struggling with model reliability? <a href="https://docs.google.com/forms/d/10OVxD0OCjZQHrtfESt7t3lqTMRC_QzuiyQGmntmbWIY">Contact us.</a></li>
+            <li>Want updates on our work? <a href="https://forms.gle/vzDzFeeW4d9jFjRJ7">Sign up here.</a></li>
+            <li>We're hiring. <a href="#careers">See open positions.</a></li>
+        </ul>
     </div>
-    <ul>
-        <li>Struggling with model reliability? <a href="https://docs.google.com/forms/d/10OVxD0OCjZQHrtfESt7t3lqTMRC_QzuiyQGmntmbWIY">Contact us.</a></li>
-        <li>Want updates on our work? <a href="https://forms.gle/vzDzFeeW4d9jFjRJ7">Sign up here.</a></li>
-        <li>We're hiring. <a href="#">See open positions.</a></li>
-    </ul>
+
+    <div id="careers" class="page">
+        <div class="content">
+            <h1>Careers at Womp Labs</h1>
+            <h2>Join us in revolutionizing AI data quality</h2>
+            <p>
+                At Womp Labs, we're tackling one of the most critical challenges in AI: data quality and traceability. We're looking for passionate individuals who want to make a significant impact on the future of AI development.
+            </p>
+            <p>
+                Current openings:
+            </p>
+            <ul>
+                <li>Senior Machine Learning Engineer</li>
+                <li>Data Scientist</li>
+                <li>Full Stack Developer</li>
+                <li>Product Manager</li>
+            </ul>
+            <p>
+                To apply, please send your resume and a brief introduction to <a href="mailto:careers@womplabs.ai">careers@womplabs.ai</a>
+            </p>
+        </div>
+        <a href="#home" class="back-link">Back to Home</a>
+    </div>
 </body>
 </html>
