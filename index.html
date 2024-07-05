@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Womp Labs</title>
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
         body {
             text-align: center;
             font-size: 20px;
@@ -12,25 +17,38 @@
             background-color: black;
             color: white;
             max-width: 600px;
-            margin: 20px auto;
+            margin: 0 auto;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            justify-content: space-between;
+        }
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         h1 {
             font-size: 4em;
+            margin-bottom: 10px;
         }
         h2 {
             font-size: 1.75em;
+            margin-top: 0;
+            margin-bottom: 40px;
         }
         p {
             font-size: 1em;
+            margin-bottom: 40px;
         }
         ul {
             list-style-type: none;
             padding: 0;
-            margin-top: auto;
-            padding-bottom: 20px;
+            margin-top: 40px;
+        }
+        li {
+            margin-bottom: 15px;
         }
         a {
             color: #00FFFF;
@@ -38,11 +56,13 @@
     </style>
 </head>
 <body>
-    <h1>Womp Labs</h1>
-    <h2>Uncovering strong links between training data and model behaviors.</h2>
-    <p>
-        Data quality is now the largest blocker to scaling AI performance. We train large models on trillions of tokens, but when they fail, finding those responsible is incredibly hard. As a result, edge cases are brutally difficult to mitigate and reliability can be a nightmare. The next OOM of performance will come from progress made on this problem.
-    </p>
+    <div class="content">
+        <h1>Womp Labs</h1>
+        <h2>Uncovering strong links between training data and model behaviors.</h2>
+        <p>
+            Data quality is now the largest blocker to scaling AI performance. We train large models on trillions of tokens, but when they fail, finding those responsible is incredibly hard. As a result, edge cases are brutally difficult to mitigate and reliability can be a nightmare. The next OOM of performance will come from progress made on this problem.
+        </p>
+    </div>
     <ul>
         <li>Struggling with model reliability? <a href="https://docs.google.com/forms/d/10OVxD0OCjZQHrtfESt7t3lqTMRC_QzuiyQGmntmbWIY">Contact us.</a></li>
         <li>Want updates on our work? <a href="https://forms.gle/vzDzFeeW4d9jFjRJ7">Sign up here.</a></li>
