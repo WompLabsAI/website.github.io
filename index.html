@@ -115,11 +115,15 @@
 
         function handleLocation() {
             const path = window.location.pathname;
-            const routes = {
-                "/": "home",
-                "/careers": "careers"
-            };
-            const pageId = routes[path] || "home";
+            const fullPath = window.location.href;
+            let pageId = "home";
+
+            if (path === "/careers" || path === "/careers/" || 
+                fullPath.includes("www.womplabs.ai/careers") || 
+                fullPath.includes("womplabs.ai/careers")) {
+                pageId = "careers";
+            }
+
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
