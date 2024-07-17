@@ -55,6 +55,7 @@
         a {
             color: #00FFFF;
             text-decoration: none;
+            cursor: pointer;
         }
         a:hover {
             text-decoration: underline;
@@ -73,7 +74,7 @@
     </style>
 </head>
 <body>
-    <div id="home" class="page active">
+    <div id="home" class="page">
         <div class="content">
             <h1>Womp Labs</h1>
             <h2>Uncovering strong links between training data and model behaviors.</h2>
@@ -84,10 +85,9 @@
         <ul>
             <li>Struggling with model reliability? <a href="https://calendly.com/joe-qh_q/intro-call">Get in touch.</a></li>
             <li>Want updates on our work? <a href="https://forms.gle/vzDzFeeW4d9jFjRJ7">Sign up here.</a></li>
-            <li>We're hiring. <a href="#careers" onclick="showPage('careers'); return false;">See open positions.</a></li>
+            <li>We're hiring. <a href="/careers" onclick="route(event)">See open positions.</a></li>
         </ul>
     </div>
-
     <div id="careers" class="page">
         <div class="content">
             <h1>Careers at Womp Labs</h1>
@@ -103,23 +103,33 @@
                 To apply, please send your resume and a brief introduction to <a href="mailto:careers@womplabs.ai">careers@womplabs.ai</a>
             </p>
         </div>
-        <a href="#" onclick="showPage('home'); return false;" class="back-link">Back to Home</a>
+        <a href="/" onclick="route(event)" class="back-link">Back to Home</a>
     </div>
-
     <script>
-        function showPage(pageId) {
+        function route(event) {
+            event = event || window.event;
+            event.preventDefault();
+            window.history.pushState({}, "", event.target.href);
+            handleLocation();
+        }
+
+        function handleLocation() {
+            const path = window.location.pathname;
+            const routes = {
+                "/": "home",
+                "/careers": "careers"
+            };
+            const pageId = routes[path] || "home";
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
         }
 
-        // Check for hash in URL on page load
-        window.onload = function() {
-            if (window.location.hash === '#careers') {
-                showPage('careers');
-            }
-        }
+        window.onpopstate = handleLocation;
+        window.route = route;
+
+        handleLocation();
     </script>
 </body>
 </html>
