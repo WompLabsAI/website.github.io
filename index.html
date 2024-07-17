@@ -129,7 +129,10 @@
         window.onpopstate = handleLocation;
         window.route = route;
 
-        handleLocation();
+        // Handle initial page load
+        document.addEventListener('DOMContentLoaded', (event) => {
+            handleLocation();
+        });
     </script>
 </body>
 </html>
