@@ -53,12 +53,16 @@
             margin-bottom: 1vh;
         }
         a {
-            color: #00FFFF;
+            color: white;
             text-decoration: none;
             cursor: pointer;
+            border-bottom: 1px solid white;
+            padding-bottom: 1px;
+            transition: all 0.3s ease;
         }
         a:hover {
-            text-decoration: underline;
+            border-bottom: 1px solid transparent;
+            text-shadow: 0 0 5px white;
         }
         .page {
             display: none;
@@ -71,6 +75,10 @@
         .back-link {
             margin-top: 3vh;
         }
+        .backers {
+            font-style: italic;
+            margin-top: 3vh;
+        }
     </style>
 </head>
 <body>
@@ -80,6 +88,9 @@
             <h2>Uncovering strong links between training data and model behaviors.</h2>
             <p>
                 Data quality is now the largest blocker to scaling AI performance. We train large models on trillions of tokens, but when they fail, finding those responsible is incredibly hard. As a result, edge cases are brutally difficult to mitigate and reliability can be a nightmare. The next OOM of performance will come from progress made on this problem.
+            </p>
+            <p class="backers">
+                Backed by Nat Friedman, Daniel Gross, Ian Hogarth + more
             </p>
         </div>
         <ul>
