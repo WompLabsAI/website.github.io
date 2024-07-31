@@ -9,18 +9,18 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         body {
             text-align: center;
-            font-size: 2.5vh;
+            font-size: 16px;
             line-height: 1.4;
             background-color: black;
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 2vh;
+            padding: 20px;
             box-sizing: border-box;
         }
         .content {
@@ -30,27 +30,27 @@
             justify-content: center;
         }
         h1 {
-            font-size: 8vh;
-            margin: 0 0 1vh;
+            font-size: 2.5rem;
+            margin: 0 0 0.5rem;
         }
         h2 {
-            font-size: 3vh;
-            margin: 0 0 3vh;
+            font-size: 1.2rem;
+            margin: 0 0 1.5rem;
         }
         p {
-            font-size: 2.5vh;
-            margin: 0 0 3vh;
-            max-width: 80%;
+            font-size: 1rem;
+            margin: 0 0 1.5rem;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
         ul {
             list-style-type: none;
             padding: 0;
-            margin: 3vh 0 0;
+            margin: 1.5rem 0 0;
         }
         li {
-            margin-bottom: 1vh;
+            margin-bottom: 1rem;
         }
         a {
             color: white;
@@ -66,18 +66,34 @@
         }
         .page {
             display: none;
-            height: 100%;
+            min-height: 100%;
         }
         .page.active {
             display: flex;
             flex-direction: column;
         }
         .back-link {
-            margin-top: 3vh;
+            margin-top: 1.5rem;
         }
         .backers {
             font-style: italic;
-            margin-top: 3vh;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
