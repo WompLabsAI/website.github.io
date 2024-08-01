@@ -47,13 +47,19 @@
             margin-left: auto;
             margin-right: auto;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 2rem 0 0;
+        .links-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 2rem;
         }
-        li {
-            margin-bottom: 1rem;
+        .link-item {
+            flex: 1;
+            margin: 0 1rem 1rem;
+            min-width: 200px;
+        }
+        .link-item span {
+            display: block;
         }
         a {
             color: white;
@@ -99,6 +105,10 @@
             p {
                 font-size: 1.1rem;
             }
+            .link-item {
+                flex-basis: 100%;
+                margin: 0 0 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -130,11 +140,20 @@
         <p class="backers">
             Backed by Nat Friedman, Daniel Gross, Ian Hogarth + more
         </p>
-        <ul>
-            <li>Struggling with model reliability? <a href="https://calendly.com/joe-qh_q/intro-call">Get in touch.</a></li>
-            <li>Want updates on our work? <a href="https://forms.gle/vzDzFeeW4d9jFjRJ7">Sign up here.</a></li>
-            <li>We're hiring. <a href="/careers" onclick="route(event)">See open positions.</a></li>
-        </ul>
+        <div class="links-container">
+            <div class="link-item">
+                <span>Struggling with model reliability?</span>
+                <a href="https://calendly.com/joe-qh_q/intro-call">Get in touch.</a>
+            </div>
+            <div class="link-item">
+                <span>Want updates on our work?</span>
+                <a href="https://forms.gle/vzDzFeeW4d9jFjRJ7">Sign up here.</a>
+            </div>
+            <div class="link-item">
+                <span>We're hiring.</span>
+                <a href="/careers" onclick="route(event)">See open positions.</a>
+            </div>
+        </div>
     </div>
     <div id="careers" class="page">
         <div class="content">
