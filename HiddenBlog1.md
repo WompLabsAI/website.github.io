@@ -1,17 +1,9 @@
 ---
 layout: post
 title: 'TRAK_WOMP: A New SOTA in Data Attribution'
-permalink: '/Blog1.html'
-katex: True
 ---
 
-# A New SOTA in Data Attribution
-
-\[ MULTILINE \]
-$$ MULTILINE $$
-$ SINGLE LINE $
-
-![TRAK vs TRAK_WOMP Performance](./performance_comparison_scatter.png)
+![TRAK vs TRAK_WOMP Performance](./image.png){width=70%}
 
 *Figure 1: $TRAK_{WOMP}$ achieves a new SOTA by nearly an order of magnitude. It consistently makes counterfactual predictions more accurate than $TRAK$ with $75\%$ fewer reference models. Per-block projection dimension is 2048.*
 
@@ -37,7 +29,7 @@ $$How\ accurately\ can\ we\ predict\ which\ dataset\ is\ better\ for\ learning\ 
 
 Just over a year ago, a lab at MIT introduced [TRAK](https://arxiv.org/abs/2303.14186), a data attribution method orders of magnitudes more efficient than the prior *state of the art*. Their approach casts the complex problem of attributing influence in neural nets to the well understood setting of linear regression. Leaving the details to their paper, the final form of their method is as follows:
 
-$$\tau_{TRAK}(z,S) := S(\frac{1}{M^2}(\sum_{m=1}^M Q_m)*(\sum_{m=1}^M\phi_m(z)(\Phi_m^T\Phi_m)^{-1}\Phi_m^T),\hat\lambda)\tag{2}$$
+$$\tau_{TRAK}(z,S) := S(\frac{1}{M^2}(\sum_{m=1}^M Q_m)(\sum_{m=1}^M\phi(z)(\phi^T\phi)^{-1}\phi^T),\hat\lambda)\tag{2}$$
 
 where $z$ is an example of interest, $M$ is the number of reference models used, $\phi$ is a random projection of $\nabla_\theta f(z)$, $\Phi$ is the stacked matrix of $\phi(x)$ for all training examples $x$, $Q$ is the diagonal matrix of $1-p_i$, and $S$ is a soft threshold function with threshold $\hat\lambda$.
 
@@ -81,13 +73,13 @@ Our goal is to accurately predict the result of training a $Resnet-9$ on a given
 
 ### Results
 
-![Single Model](./performance_comparison_bar.png)
+![Single Model](./performance_comparison_bar.png){width=70%}
 
 *Figure 2: We evaluate the most common real-world scenario: $M=1$ reference model. $TRAK_{WOMP}$ results in predictions that are over $2.5\ times$ more accurate than $TRAK$.*
 
 In most settings it is not feasible to retrain multiple models. As a result, the most important measure of effectiveness is the case of $M=1$. We show that $TRAK_{WOMP}$ drastically outperforms vanilla $TRAK$.
 
-![Fixed Storage](./effect_of_blocks.png)
+![Fixed Storage](./effect_of_blocks.png){width=70%}
 
 *Figure 3: We illustrate the utility of increasing the number of blocks when the projection dimension is fixed. In this case, we use $d = 32768$.*
 

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>TRAK_WOMP: A New SOTA in Data Attribution</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">TRAK_WOMP: A New SOTA in Data Attribution</h1>
+</header>
+<figure>
+<img src="./image.png" style="width:70.0%"
+alt="TRAK vs TRAK_WOMP Performance" />
+<figcaption aria-hidden="true">TRAK vs TRAK_WOMP
+Performance</figcaption>
+</figure>
+<p><em>Figure 1: <span class="math inline">\(TRAK_{WOMP}\)</span>
+achieves a new SOTA by nearly an order of magnitude. It consistently
+makes counterfactual predictions more accurate than <span
+class="math inline">\(TRAK\)</span> with <span
+class="math inline">\(75\%\)</span> fewer reference models. Per-block
+projection dimension is 2048.</em></p>
+<h2
+id="in-this-post-we-outline-our-method-trak-w_ith-o_ptimally-m_odified-p_rojections-which-sets-a-new-sota-for-predicting-the-downstream-effects-of-dataset-changes">In
+this post we outline our method, <span class="math inline">\(TRAK\
+W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}\)</span>, which sets
+a new SOTA for predicting the downstream effects of dataset
+changes!</h2>
+<p>At Womp Labs, we spend all of our time thinking about the way ML
+models use their training data. When a model fails, it would be great to
+pinpoint the source of the problem. When you have many data sources,
+you’d like to know if only one of them was doing the heavy lifting.</p>
+<p>The methods used to solve these problems fall under the umbrella of
+data attribution. Fundamentally, this is a challenge of tracing model
+outputs to training data, and then using this understanding to infer how
+to change data to affect downstream behavior. Some background can be
+found in <a
+href="https://ml-data-tutorial.org/assets/DataTutorialICML2024.pdf">this
+ICML tutorial</a>.</p>
+<h2 id="warmup">Warmup</h2>
+<h3 id="the-linear-datamodeling-score-lds">The Linear Datamodeling Score
+(LDS)</h3>
+<p>A core goal is to accurately predict the outcome of training on some
+dataset without having to do so. To quantify how good a method is at
+this, we can use the following:</p>
+<p><span
+class="math display">\[LDS(\tau,z):=\rho(f(z,\theta^*(D_j)):j\in[m],{g_\tau(z,D_j;D):j\in[m]})\tag{1}\]</span></p>
+<p>where <span class="math inline">\(D\)</span> is the training set,
+<span class="math inline">\(f\)</span> is the output of model <span
+class="math inline">\(\theta^*\)</span>, trained on <span
+class="math inline">\(D_j\subset D\)</span>, on example of interest
+<span class="math inline">\(z\)</span>, <span
+class="math inline">\(m\)</span> is number of evaluation subsets, and
+<span class="math inline">\(g_\tau\)</span> is the output prediction
+made by attribution method <span class="math inline">\(\tau\)</span>. In
+simpler terms, we are trying to answer the following question:</p>
+<p><span class="math display">\[How\ accurately\ can\ we\ predict\
+which\ dataset\ is\ better\ for\ learning\ example\ z?\]</span></p>
+<h3 id="trak">TRAK</h3>
+<p>Just over a year ago, a lab at MIT introduced <a
+href="https://arxiv.org/abs/2303.14186">TRAK</a>, a data attribution
+method orders of magnitudes more efficient than the prior <em>state of
+the art</em>. Their approach casts the complex problem of attributing
+influence in neural nets to the well understood setting of linear
+regression. Leaving the details to their paper, the final form of their
+method is as follows:</p>
+<p><span class="math display">\[\tau_{TRAK}(z,S) :=
+S(\frac{1}{M^2}(\sum_{m=1}^M
+Q_m)(\sum_{m=1}^M\phi(z)(\phi^T\phi)^{-1}\phi^T),\hat\lambda)\tag{2}\]</span></p>
+<p>where <span class="math inline">\(z\)</span> is an example of
+interest, <span class="math inline">\(M\)</span> is the number of
+reference models used, <span class="math inline">\(\phi\)</span> is a
+random projection of <span class="math inline">\(\nabla_\theta
+f(z)\)</span>, <span class="math inline">\(\Phi\)</span> is the stacked
+matrix of <span class="math inline">\(\phi(x)\)</span> for all training
+examples <span class="math inline">\(x\)</span>, <span
+class="math inline">\(Q\)</span> is the diagonal matrix of <span
+class="math inline">\(1-p_i\)</span>, and <span
+class="math inline">\(S\)</span> is a soft threshold function with
+threshold <span class="math inline">\(\hat\lambda\)</span>.</p>
+<h3 id="random-projections-and-the-jl-lemma">Random Projections and the
+JL Lemma</h3>
+<p>One of the understood sources of error in the TRAK formulation is the
+random projection step. However, a theoretical result from <a
+href="https://stanford.edu/class/cs114/readings/JL-Johnson.pdf">Johnson
+and Lindenstrauss</a>, which shows inner products are preserved with
+high probability when projecting via a matrix <span
+class="math inline">\(P\sim\mathcal{N}(0,1)^{p\times{k}}\)</span>, leads
+to the belief that this error is small. As a result, the ensembling
+improvement from <span class="math inline">\(M\)</span> different models
+is attributed to the need for different training trajectories to sample
+different possible loss landscapes.</p>
+<p>We show that this is not entirely the case. In fact, a large portion
+of the error comes from imperfections in the projection step.</p>
+<h3 id="projection-dimension-and-the-h-1-approximation">Projection
+Dimension and the <span class="math inline">\(H^{-1}\)</span>
+Approximation</h3>
+<p>To reduce this degradation in accuracy, one can increase the
+projection dimension. But, the TRAK paper shows that there is an optimal
+projection dimension, beyond which performance starts to degrade. While
+we expect higher resolution representations to be less lossy, the issue
+comes from the inverse Hessian approximation <span
+class="math inline">\((\Phi_m^T\Phi_m)^{-1}\)</span>. As dimensionality
+increases, the number of spurious correlations grows. But, a small tweak
+to the setup fixes this problem.</p>
+<h2
+id="trak-with-optimally-modified-projections-womp-_haha-see-what-we-did-there">TRAK
+With Optimally Modified Projections (WOMP)<span class="math inline">\(\
+_{haha,\ see\ what\ we\ did\ there}\)</span></h2>
+<p>We modify TRAK by decomposing the projected gradients into blocks. In
+doing so, we produce what resembles multiple checkpoints from a single
+backward pass. For example, one checkpoint projected to <span
+class="math inline">\(d=4096\)</span> can also be treated as <span
+class="math inline">\(4\)</span> different <span
+class="math inline">\(d_{batch}=1024\)</span> checkpoints. The result is
+the following formulation:</p>
+<p><span class="math display">\[\tau_{TRAK_{WOMP}}(z,S) :=
+S(\frac{1}{M^2}(\sum_{m=1}^M
+Q_m)*(\sum_{m=1}^M\sum_{b=1}^B\phi_{m,b}(z)(\Phi_{m,b}^T\Phi_{m,b})^{-1}\Phi_{m,b}^T),\hat\lambda)\tag{3}\]</span></p>
+<p>where <span class="math inline">\(B\)</span> is the number of blocks
+we decompose the projection into and <span
+class="math inline">\(\phi_{m,b}(z) = \phi_m(z)^{(b)}\)</span>.</p>
+<h3 id="an-equivalent-definition">An Equivalent Definition</h3>
+<p>An alternative way to frame our setup is as a block-wise
+decomposition of the <span class="math inline">\(H^{-1}\)</span>
+approximation. We redefine the Hessian approximation term as:</p>
+<p><span class="math display">\[\hat{H}_m^{-1} =
+diag(\Phi_{m,1}^T\Phi_{m,1},\Phi_{m,2}^T\Phi_{m,2},...,\Phi_{m,B}^T\Phi_{m,B})^{-1}\tag{4}\]</span></p>
+<p>We then, equivalent to <span class="math inline">\((3)\)</span>, come
+to the definition:</p>
+<p><span class="math display">\[\tau_{TRAK_{WOMP}}(z,S) :=
+S(\frac{1}{M^2}(\sum_{m=1}^M
+Q_m)*(\sum_{m=1}^M\phi_{m}(z){\hat{H}_m}^{-1}\Phi_{m}^T),\hat\lambda)\tag{5}\]</span></p>
+<p>Our simple change allows us to increase the projection dimension,
+thereby achieving higher resolution representations, without sacrificing
+the accuracy of the hessian approximation. What is nice about this setup
+is it introduces no additional backward passes per reference model.</p>
+<p><span class="math display">\[This\ lets\ us\ make\ better\
+predictions\ without\ multi-million\ dollar\ donations\ to\
+NVIDIA!\]</span></p>
+<h2 id="evaluating-trak_womp">Evaluating <span
+class="math inline">\(TRAK_{WOMP}\)</span></h2>
+<h3 id="setup">Setup</h3>
+<p>Our goal is to accurately predict the result of training a <span
+class="math inline">\(Resnet-9\)</span> on a given subset of <span
+class="math inline">\(CIFAR10\)</span> without having to train the
+model. To make these predictions we train <span
+class="math inline">\(M\)</span> models on random <span
+class="math inline">\(50\%\)</span> subsets of the dataset. We use
+checkpoints from these models to compute attribution scores. We then
+evaluate the methods with <span class="math inline">\(LDS\)</span> using
+<span class="math inline">\(10,000\)</span> models.</p>
+<h3 id="results">Results</h3>
+<figure>
+<img src="./performance_comparison_bar.png" style="width:70.0%"
+alt="Single Model" />
+<figcaption aria-hidden="true">Single Model</figcaption>
+</figure>
+<p><em>Figure 2: We evaluate the most common real-world scenario: <span
+class="math inline">\(M=1\)</span> reference model. <span
+class="math inline">\(TRAK_{WOMP}\)</span> results in predictions that
+are over <span class="math inline">\(2.5\ times\)</span> more accurate
+than <span class="math inline">\(TRAK\)</span>.</em></p>
+<p>In most settings it is not feasible to retrain multiple models. As a
+result, the most important measure of effectiveness is the case of <span
+class="math inline">\(M=1\)</span>. We show that <span
+class="math inline">\(TRAK_{WOMP}\)</span> drastically outperforms
+vanilla <span class="math inline">\(TRAK\)</span>.</p>
+<figure>
+<img src="./effect_of_blocks.png" style="width:70.0%"
+alt="Fixed Storage" />
+<figcaption aria-hidden="true">Fixed Storage</figcaption>
+</figure>
+<p><em>Figure 3: We illustrate the utility of increasing the number of
+blocks when the projection dimension is fixed. In this case, we use
+<span class="math inline">\(d = 32768\)</span>.</em></p>
+<p>So far, we have shown results when per-block projection dimension was
+fixed. However, we know this requires <span class="math inline">\(B\
+times\)</span> more storage. In some cases there can be storage
+constraints as well. In <em>Figure 3</em>, we fix the total projection
+dimension, <span class="math inline">\(d\)</span>, and vary <span
+class="math inline">\(B\)</span>. Out results show that, not only is
+<span class="math inline">\(TRAK_{WOMP}\)</span> superior on a fixed
+compute budget, it is better on a fixed storage budget as well.</p>
+<h2 id="more-to-come">More To Come …</h2>
+<p>We know these results are on a small scale model, but we have more to
+share soon on billion(s) parameter models and internet scale datasets.
+We believe there doesn’t need to be <em>hope</em> and <em>guesswork</em>
+when training large models. If you agree and are interested in
+collaborating or joining the team, please reach us at <a
+href="mailto:contact@womplabs.ai">contact@womplabs.ai</a>! If you would
+like to stay up to date on our work, <a
+href="https://forms.gle/vzDzFeeW4d9jFjRJ7">sign up here</a>.</p>
+<p>See you next time :)</p>
+</body>
+</html>
