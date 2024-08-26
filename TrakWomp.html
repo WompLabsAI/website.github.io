@@ -38,12 +38,12 @@ makes counterfactual predictions more accurate than <span
 class="math inline">\(TRAK\)</span> with <span
 class="math inline">\(75\%\)</span> fewer reference models. Per-block
 projection dimension is 2048.</em></p>
-<h3
+<h2
 id="in-this-post-we-outline-our-method-trak-w_ith-o_ptimally-m_odified-p_rojections-which-sets-a-new-sota-for-predicting-the-downstream-effects-of-dataset-changes">In
 this post we outline our method, <span class="math inline">\(TRAK\
 W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}\)</span>, which sets
 a new SOTA for predicting the downstream effects of dataset
-changes!</h3>
+changes!</h2>
 <p>At Womp Labs, we spend all of our time thinking about the way ML
 models use their training data. When a model fails, it would be great to
 pinpoint the source of the problem. When you have many data sources,
@@ -84,7 +84,7 @@ regression. Leaving the details to their paper, the final form of their
 method is as follows:</p>
 <p><span class="math display">\[\tau_{TRAK}(z,S) :=
 S(\frac{1}{M^2}(\sum_{m=1}^M
-Q_m)(\sum_{m=1}^M\phi(z)(\phi^T\phi)^{-1}\phi^T),\hat\lambda)\tag{2}\]</span></p>
+Q_m)*(\sum_{m=1}^M\phi_m(z)(\Phi_m^T\Phi_m)^{-1}\Phi_m^T),\hat\lambda)\tag{2}\]</span></p>
 <p>where <span class="math inline">\(z\)</span> is an example of
 interest, <span class="math inline">\(M\)</span> is the number of
 reference models used, <span class="math inline">\(\phi\)</span> is a
@@ -137,15 +137,17 @@ S(\frac{1}{M^2}(\sum_{m=1}^M
 Q_m)*(\sum_{m=1}^M\sum_{b=1}^B\phi_{m,b}(z)(\Phi_{m,b}^T\Phi_{m,b})^{-1}\Phi_{m,b}^T),\hat\lambda)\tag{3}\]</span></p>
 <p>where <span class="math inline">\(B\)</span> is the number of blocks
 we decompose the projection into and <span
-class="math inline">\(\phi_{m,b}(z) = \phi_m(z)^{(b)}\)</span>.</p>
+class="math inline">\(\phi_{m,b}(z)\)</span> is the <span
+class="math inline">\(b^{th}\)</span> block of <span
+class="math inline">\(\phi_{m}(z)\)</span>.</p>
 <h3 id="an-equivalent-definition">An Equivalent Definition</h3>
 <p>An alternative way to frame our setup is as a block-wise
 decomposition of the <span class="math inline">\(H^{-1}\)</span>
-approximation. We redefine the Hessian approximation term as:</p>
-<p><span class="math display">\[\hat{H}_m^{-1} =
+approximation. We redefine this term as:</p>
+<p><span class="math display">\[\hat{H}_m^{-1} :=
 diag(\Phi_{m,1}^T\Phi_{m,1},\Phi_{m,2}^T\Phi_{m,2},...,\Phi_{m,B}^T\Phi_{m,B})^{-1}\tag{4}\]</span></p>
-<p>We then, equivalent to <span class="math inline">\((3)\)</span>, come
-to the definition:</p>
+<p>Finally, equivalent to <span class="math inline">\((3)\)</span>, we
+come to the definition:</p>
 <p><span class="math display">\[\tau_{TRAK_{WOMP}}(z,S) :=
 S(\frac{1}{M^2}(\sum_{m=1}^M
 Q_m)*(\sum_{m=1}^M\phi_{m}(z){\hat{H}_m}^{-1}\Phi_{m}^T),\hat\lambda)\tag{5}\]</span></p>
@@ -203,6 +205,6 @@ collaborating or joining the team, please reach us at <a
 href="mailto:contact@womplabs.ai">contact@womplabs.ai</a>! If you would
 like to stay up to date on our work, <a
 href="https://forms.gle/vzDzFeeW4d9jFjRJ7">sign up here</a>.</p>
-<p>See you next time :)</p>
+<p>See you next time :slightly_smiling_face:</p>
 </body>
 </html>
