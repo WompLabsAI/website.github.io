@@ -3,9 +3,7 @@ layout: post
 ---
 <h1 align="center">A New SOTA in Data Attribution</h1>
 
-![](./image.png){width=70% style="display: block; margin: 0 auto;"}
-
-*Figure 1: $TRAK_{WOMP}$ achieves a new SOTA by nearly an order of magnitude. It consistently makes counterfactual predictions more accurate than $TRAK$ with $75\%$ fewer reference models. Per-block projection dimension is 2048.*
+![*Figure 1: $TRAK_{WOMP}$ achieves a new SOTA by nearly an order of magnitude. It consistently makes counterfactual predictions more accurate than $TRAK$ with $75\%$ fewer reference models. Per-block projection dimension is 2048.*](./image.png){width=70% style="display: block; margin: 0 auto;"}
 
 ## In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes!
 
@@ -73,15 +71,11 @@ Our goal is to accurately predict the result of training a $Resnet-9$ on a given
 
 ### Results
 
-![](./performance_comparison_bar.png){width=70% style="display: block; margin: 0 auto;"}
-
-*Figure 2: We evaluate the most common real-world scenario: $M=1$ reference model. $TRAK_{WOMP}$ results in predictions that are over $2.5\ times$ more accurate than $TRAK$.*
+![*Figure 2: We evaluate the most common real-world scenario: $M=1$ reference model. $TRAK_{WOMP}$ results in predictions that are over $2.5\ times$ more accurate than $TRAK$.*](./performance_comparison_bar.png){width=70% style="display: block; margin: 0 auto;"}
 
 In most settings it is not feasible to retrain multiple models. As a result, the most important measure of effectiveness is the case of $M=1$. We show that $TRAK_{WOMP}$ drastically outperforms vanilla $TRAK$.
 
-![](./effect_of_blocks.png){width=70% style="display: block; margin: 0 auto;"}
-
-*Figure 3: We illustrate the utility of increasing the number of blocks when the projection dimension is fixed. In this case, we use $d = 32768$.*
+![*Figure 3: We illustrate the utility of increasing the number of blocks when the projection dimension is fixed. In this case, we use $d = 32768$.*](./effect_of_blocks.png){width=70% style="display: block; margin: 0 auto;"}
 
 So far, we have shown results when per-block projection dimension was fixed. However, we know this requires $B\ times$ more storage. In some cases there can be storage constraints as well. In *Figure 3*, we fix the total projection dimension, $d$, and vary $B$. Out results show that, not only is $TRAK_{WOMP}$ superior on a fixed compute budget, it is better on a fixed storage budget as well.
 
@@ -89,4 +83,4 @@ So far, we have shown results when per-block projection dimension was fixed. How
 
 We know these results are on a small scale model, but we have more to share soon on billion(s) parameter models and internet scale datasets. We believe there doesn't need to be *hope* and *guesswork* when training large models. If you agree and are interested in collaborating or joining the team, please reach us at [contact@womplabs.ai](mailto:contact@womplabs.ai)! If you would like to stay up to date on our work, [sign up here](https://forms.gle/vzDzFeeW4d9jFjRJ7).
 
-See you next time :slightly_smiling_face:
+See you next time 🙂
