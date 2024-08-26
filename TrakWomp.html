@@ -174,23 +174,31 @@ checkpoints from these models to compute attribution scores. We then
 evaluate the methods with <span class="math inline">\(LDS\)</span> using
 <span class="math inline">\(10,000\)</span> models.</p>
 <h3 id="results">Results</h3>
-<p><img src="./performance_comparison_bar.png"
-style="display: block; margin: 0 auto;;width:70.0%" /></p>
-<p><em>Figure 2: We evaluate the most common real-world scenario: <span
-class="math inline">\(M=1\)</span> reference model. <span
-class="math inline">\(TRAK_{WOMP}\)</span> results in predictions that
-are over <span class="math inline">\(2.5\ times\)</span> more accurate
-than <span class="math inline">\(TRAK\)</span>.</em></p>
+<figure>
+<img src="./performance_comparison_bar.png"
+style="display: block; margin: 0 auto;;width:70.0%"
+alt="Figure 2: We evaluate the most common real-world scenario: M=1 reference model. TRAK_{WOMP} results in predictions that are over 2.5\ times more accurate than TRAK." />
+<figcaption aria-hidden="true"><em>Figure 2: We evaluate the most common
+real-world scenario: <span class="math inline">\(M=1\)</span> reference
+model. <span class="math inline">\(TRAK_{WOMP}\)</span> results in
+predictions that are over <span class="math inline">\(2.5\
+times\)</span> more accurate than <span
+class="math inline">\(TRAK\)</span>.</em></figcaption>
+</figure>
 <p>In most settings it is not feasible to retrain multiple models. As a
 result, the most important measure of effectiveness is the case of <span
 class="math inline">\(M=1\)</span>. We show that <span
 class="math inline">\(TRAK_{WOMP}\)</span> drastically outperforms
 vanilla <span class="math inline">\(TRAK\)</span>.</p>
-<p><img src="./effect_of_blocks.png"
-style="display: block; margin: 0 auto;;width:70.0%" /></p>
-<p><em>Figure 3: We illustrate the utility of increasing the number of
-blocks when the projection dimension is fixed. In this case, we use
-<span class="math inline">\(d = 32768\)</span>.</em></p>
+<figure>
+<img src="./effect_of_blocks.png"
+style="display: block; margin: 0 auto;;width:70.0%"
+alt="Figure 3: We illustrate the utility of increasing the number of blocks when the projection dimension is fixed. In this case, we use d = 32768." />
+<figcaption aria-hidden="true"><em>Figure 3: We illustrate the utility
+of increasing the number of blocks when the projection dimension is
+fixed. In this case, we use <span class="math inline">\(d =
+32768\)</span>.</em></figcaption>
+</figure>
 <p>So far, we have shown results when per-block projection dimension was
 fixed. However, we know this requires <span class="math inline">\(B\
 times\)</span> more storage. In some cases there can be storage
@@ -208,6 +216,6 @@ collaborating or joining the team, please reach us at <a
 href="mailto:contact@womplabs.ai">contact@womplabs.ai</a>! If you would
 like to stay up to date on our work, <a
 href="https://forms.gle/vzDzFeeW4d9jFjRJ7">sign up here</a>.</p>
-<p>See you next time :slightly_smiling_face:</p>
+<p>See you next time 🙂</p>
 </body>
 </html>
