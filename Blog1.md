@@ -1,3 +1,9 @@
+---
+layout: default
+title: Your Blog Title
+permalink: /Blog1/
+---
+
 # A New SOTA in Data Attribution
 
 ![TRAK vs TRAK_WOMP Performance](./performance_comparison_scatter.png)
