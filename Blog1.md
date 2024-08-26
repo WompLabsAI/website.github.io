@@ -1,10 +1,15 @@
 ---
-layout: default
-title: Your Blog Title
-permalink: /Blog1/
+layout: post
+title: 'TRAK_WOMP: A New SOTA in Data Attribution'
+permalink: '/Blog1.html'
+katex: True
 ---
 
 # A New SOTA in Data Attribution
+
+\[ MULTILINE \]
+$$ MULTILINE $$
+$ SINGLE LINE $
 
 ![TRAK vs TRAK_WOMP Performance](./performance_comparison_scatter.png)
 
