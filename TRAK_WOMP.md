@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 'TRAK_WOMP: A New SOTA in Data Attribution'
 ---
+<h1 align="center">A New SOTA in Data Attribution</h1>
 
-![TRAK vs TRAK_WOMP Performance](./image.png){width=70%}
+![](./image.png){width=70% style="display: block; margin: 0 auto;"}
 
 *Figure 1: $TRAK_{WOMP}$ achieves a new SOTA by nearly an order of magnitude. It consistently makes counterfactual predictions more accurate than $TRAK$ with $75\%$ fewer reference models. Per-block projection dimension is 2048.*
 
-## In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes!
+### In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes!
 
 At Womp Labs, we spend all of our time thinking about the way ML models use their training data. When a model fails, it would be great to pinpoint the source of the problem. When you have many data sources, you'd like to know if only one of them was doing the heavy lifting.
 
@@ -73,13 +73,13 @@ Our goal is to accurately predict the result of training a $Resnet-9$ on a given
 
 ### Results
 
-![Single Model](./performance_comparison_bar.png){width=70%}
+![](./performance_comparison_bar.png){width=70% style="display: block; margin: 0 auto;"}
 
 *Figure 2: We evaluate the most common real-world scenario: $M=1$ reference model. $TRAK_{WOMP}$ results in predictions that are over $2.5\ times$ more accurate than $TRAK$.*
 
 In most settings it is not feasible to retrain multiple models. As a result, the most important measure of effectiveness is the case of $M=1$. We show that $TRAK_{WOMP}$ drastically outperforms vanilla $TRAK$.
 
-![Fixed Storage](./effect_of_blocks.png){width=70%}
+![](./effect_of_blocks.png){width=70% style="display: block; margin: 0 auto;"}
 
 *Figure 3: We illustrate the utility of increasing the number of blocks when the projection dimension is fixed. In this case, we use $d = 32768$.*
 

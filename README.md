@@ -1,1 +1,1 @@
-pandoc --standalone --mathjax -f markdown -t html Blog1.md -o Blog2.html --css=styles.css
+pandoc --standalone --mathjax -f markdown -t html TRAK_WOMP.md -o TrakWomp.html --css=styles.css
