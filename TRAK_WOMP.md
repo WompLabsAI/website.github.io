@@ -3,9 +3,9 @@ layout: post
 ---
 <h1 align="center">$TRAK_{WOMP}$: A New SOTA in Data Attribution</h1>
 
-![*Figure 1: $TRAK_{WOMP}$ achieves a new SOTA by nearly an order of magnitude. It consistently makes counterfactual predictions more accurate than $TRAK$ with $75\%$ fewer reference models. Per-block projection dimension is 2048.*](./image.png){width=100% style="display: block; margin: 0 auto;"}
+![](./image.png){width=100% style="display: block; margin: 0 auto;"}
 
-**In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes!**
+In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes! $TRAK_{WOMP}$ achieves a new SOTA by nearly an order of magnitude, consistently making counterfactual predictions more accurate than $TRAK$ with 75% fewer reference models.
 
 # Table of Contents
 - [Warmup](#warmup)
@@ -92,7 +92,7 @@ In most settings it is not feasible to retrain multiple models. As a result, the
 
 ![*Figure 3: We illustrate the utility of increasing the number of blocks when the projection dimension is fixed. In this case, we use $d = 32768$.*](./effect_of_blocks.png){width=100% style="display: block; margin: 0 auto;"}
 
-So far, we have shown results when per-block projection dimension was fixed. However, we know this requires $B\ times$ more storage. In some cases there can be storage constraints as well. In *Figure 3*, we fix the total projection dimension, $d$, and vary $B$. Our results show that not only is $TRAK_{WOMP}$ superior on a fixed compute budget, it is better on a fixed storage budget as well.
+So far, we have shown results when per-block projection dimension was fixed. However, we know this requires $B$ times more storage. In some cases there can be storage constraints as well. In *Figure 3*, we fix the total projection dimension, $d$, and vary $B$. Our results show that not only is $TRAK_{WOMP}$ superior on a fixed compute budget, it is better on a fixed storage budget as well.
 
 ## More To Come ...
 
