@@ -5,7 +5,20 @@ layout: post
 
 ![*Figure 1: $TRAK_{WOMP}$ achieves a new SOTA by nearly an order of magnitude. It consistently makes counterfactual predictions more accurate than $TRAK$ with $75\%$ fewer reference models. Per-block projection dimension is 2048.*](./image.png){width=100% style="display: block; margin: 0 auto;"}
 
-### In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes!
+**In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes!**
+
+# Table of Contents
+- [Warmup](#warmup)
+	- [The Linear Datamodeling Score (LDS)](#the-linear-datamodeling-score-lds)
+	- [TRAK](#trak)
+	- [Random Projections and the JL Lemma](#random-projections-and-the-jl-lemma)
+	- [Projection Dimension and the $H^{-1}$ Approximation](#projection-dimension-and-the-h-1-approximation)
+- [TRAK With Optimally Modified Projections (WOMP)](#trak-with-optimally-modified-projections-womp)
+	- [An Equivalent Definition](#an-equivalent-definition)
+- [Evaluating TRAK_WOMP](#evaluating-trak_womp)
+	- [Setup](#setup)
+	- [Results](#results)
+- [More To Come ...](#more-to-come)
 
 At Womp Labs, we spend all of our time thinking about the way ML models use their training data. When a model fails, it would be great to pinpoint the source of the problem. When you have many data sources, you'd like to know if only one of them was doing the heavy lifting.
 
