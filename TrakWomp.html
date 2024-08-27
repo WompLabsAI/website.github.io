@@ -51,6 +51,17 @@ changes!</h3>
 models use their training data. When a model fails, it would be great to
 pinpoint the source of the problem. When you have many data sources,
 you’d like to know if only one of them was doing the heavy lifting.</p>
+<p>Anyone training models knows there is still a fair amount of
+<em>witchcraft</em> that goes into turning chunks of tokens into
+sensible, useful things. Some of this is interpretable, like the fact
+that coding examples help with logic and reasoning problems. Some of it,
+like the fact that <a href="https://arxiv.org/pdf/2404.01099">math
+examples can break safety guardrails</a>, is less so. <em>And</em> it
+becomes even more complicated when you consider that these heuristics
+are dependent on the model you’re training and the other data at your
+disposal. For these reasons, it becomes increasingly important to work
+on ways to quantify what data points are actually contributing to a
+training run.</p>
 <p>The methods used to solve these problems fall under the umbrella of
 data attribution. Fundamentally, this is a challenge of tracing model
 outputs to training data, and then using this understanding to infer how
@@ -69,7 +80,7 @@ class="math display">\[LDS(\tau,z):=\rho(f(z,\theta^*(D_j)):j\in[m],{g_\tau(z,D_
 <p>where <span class="math inline">\(D\)</span> is the training set,
 <span class="math inline">\(f\)</span> is the output of model <span
 class="math inline">\(\theta^*\)</span>, trained on <span
-class="math inline">\(D_j\subset D\)</span>, on example of interest
+class="math inline">\(D_j\subset D\)</span>, on an example of interest
 <span class="math inline">\(z\)</span>, <span
 class="math inline">\(m\)</span> is number of evaluation subsets, and
 <span class="math inline">\(g_\tau\)</span> is the output prediction
@@ -107,8 +118,8 @@ href="https://stanford.edu/class/cs114/readings/JL-Johnson.pdf">Johnson
 and Lindenstrauss</a>, which shows inner products are preserved with
 high probability when projecting via a matrix <span
 class="math inline">\(P\sim\mathcal{N}(0,1)^{p\times{k}}\)</span>, leads
-to the belief that this error is small. As a result, the ensembling
-improvement from <span class="math inline">\(M\)</span> different models
+to the belief that this error is small. As a result, the improvement
+from ensembling <span class="math inline">\(M\)</span> different models
 is attributed to the need for different training trajectories to sample
 different possible loss landscapes.</p>
 <p>We show that this is not entirely the case. In fact, a large portion
@@ -117,9 +128,9 @@ of the error comes from imperfections in the projection step.</p>
 Dimension and the <span class="math inline">\(H^{-1}\)</span>
 Approximation</h3>
 <p>To reduce this degradation in accuracy, one can increase the
-projection dimension. But, the TRAK paper shows that there is an optimal
+projection dimension. But, the TRAK paper shows there is an optimal
 projection dimension, beyond which performance starts to degrade. While
-we expect higher resolution representations to be less lossy, the issue
+we expect higher-dimensional representations to be less lossy, the issue
 comes from the inverse Hessian approximation <span
 class="math inline">\((\Phi_m^T\Phi_m)^{-1}\)</span>. As dimensionality
 increases, the number of spurious correlations grows. But, a small tweak
@@ -156,7 +167,7 @@ S(\frac{1}{M^2}(\sum_{m=1}^M
 Q_m)*(\sum_{m=1}^M\phi_{m}(z){\hat{H}_m}^{-1}\Phi_{m}^T),\hat\lambda)\tag{5}\]</span></p>
 <p>Our simple change allows us to increase the projection dimension,
 thereby achieving higher resolution representations, without sacrificing
-the accuracy of the hessian approximation. What is nice about this setup
+the accuracy of the Hessian approximation. What is nice about this setup
 is it introduces no additional backward passes per reference model.</p>
 <p><span class="math display">\[This\ lets\ us\ make\ better\
 predictions\ without\ multi-million\ dollar\ donations\ to\
@@ -170,9 +181,10 @@ class="math inline">\(CIFAR10\)</span> without having to train the
 model. To make these predictions we train <span
 class="math inline">\(M\)</span> models on random <span
 class="math inline">\(50\%\)</span> subsets of the dataset. We use
-checkpoints from these models to compute attribution scores. We then
-evaluate the methods with <span class="math inline">\(LDS\)</span> using
-<span class="math inline">\(10,000\)</span> models.</p>
+checkpoints from these models as reference models to compute attribution
+scores. We then evaluate the methods with <span
+class="math inline">\(LDS\)</span> using <span
+class="math inline">\(10,000\)</span> models.</p>
 <h3 id="results">Results</h3>
 <figure>
 <img src="./performance_comparison_bar.png"
@@ -186,10 +198,10 @@ times\)</span> more accurate than <span
 class="math inline">\(TRAK\)</span>.</em></figcaption>
 </figure>
 <p>In most settings it is not feasible to retrain multiple models. As a
-result, the most important measure of effectiveness is the case of <span
-class="math inline">\(M=1\)</span>. We show that <span
-class="math inline">\(TRAK_{WOMP}\)</span> drastically outperforms
-vanilla <span class="math inline">\(TRAK\)</span>.</p>
+result, the most important measure of effectiveness is the performance
+when only using <span class="math inline">\(M=1\)</span> model. We show
+that <span class="math inline">\(TRAK_{WOMP}\)</span> drastically
+outperforms vanilla <span class="math inline">\(TRAK\)</span>.</p>
 <figure>
 <img src="./effect_of_blocks.png"
 style="display: block; margin: 0 auto;;width:100.0%"
@@ -204,13 +216,13 @@ fixed. However, we know this requires <span class="math inline">\(B\
 times\)</span> more storage. In some cases there can be storage
 constraints as well. In <em>Figure 3</em>, we fix the total projection
 dimension, <span class="math inline">\(d\)</span>, and vary <span
-class="math inline">\(B\)</span>. Out results show that, not only is
+class="math inline">\(B\)</span>. Our results show that not only is
 <span class="math inline">\(TRAK_{WOMP}\)</span> superior on a fixed
 compute budget, it is better on a fixed storage budget as well.</p>
 <h2 id="more-to-come">More To Come …</h2>
 <p>We know these results are on a small scale model, but we have more to
 share soon on billion(s) parameter models and internet scale datasets.
-We believe there doesn’t need to be <em>hope</em> and <em>guesswork</em>
+We believe we can eliminate the <em>hope</em> and <em>guesswork</em>
 when training large models. If you agree and are interested in
 collaborating or joining the team, please reach us at <a
 href="mailto:contact@womplabs.ai">contact@womplabs.ai</a>! If you would
