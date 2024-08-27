@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>TRAK_WOMP</title>
+  <title>Trak_Womp</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -32,7 +32,7 @@ A New SOTA in Data Attribution
 </h1>
 <figure>
 <img src="./image.png"
-style="display: block; margin: 0 auto;;width:70.0%"
+style="display: block; margin: 0 auto;;width:100.0%"
 alt="Figure 1: TRAK_{WOMP} achieves a new SOTA by nearly an order of magnitude. It consistently makes counterfactual predictions more accurate than TRAK with 75\% fewer reference models. Per-block projection dimension is 2048." />
 <figcaption aria-hidden="true"><em>Figure 1: <span
 class="math inline">\(TRAK_{WOMP}\)</span> achieves a new SOTA by nearly
@@ -41,12 +41,12 @@ more accurate than <span class="math inline">\(TRAK\)</span> with <span
 class="math inline">\(75\%\)</span> fewer reference models. Per-block
 projection dimension is 2048.</em></figcaption>
 </figure>
-<h2
+<h3
 id="in-this-post-we-outline-our-method-trak-w_ith-o_ptimally-m_odified-p_rojections-which-sets-a-new-sota-for-predicting-the-downstream-effects-of-dataset-changes">In
 this post we outline our method, <span class="math inline">\(TRAK\
 W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}\)</span>, which sets
 a new SOTA for predicting the downstream effects of dataset
-changes!</h2>
+changes!</h3>
 <p>At Womp Labs, we spend all of our time thinking about the way ML
 models use their training data. When a model fails, it would be great to
 pinpoint the source of the problem. When you have many data sources,
@@ -176,7 +176,7 @@ evaluate the methods with <span class="math inline">\(LDS\)</span> using
 <h3 id="results">Results</h3>
 <figure>
 <img src="./performance_comparison_bar.png"
-style="display: block; margin: 0 auto;;width:70.0%"
+style="display: block; margin: 0 auto;;width:100.0%"
 alt="Figure 2: We evaluate the most common real-world scenario: M=1 reference model. TRAK_{WOMP} results in predictions that are over 2.5\ times more accurate than TRAK." />
 <figcaption aria-hidden="true"><em>Figure 2: We evaluate the most common
 real-world scenario: <span class="math inline">\(M=1\)</span> reference
@@ -192,7 +192,7 @@ class="math inline">\(TRAK_{WOMP}\)</span> drastically outperforms
 vanilla <span class="math inline">\(TRAK\)</span>.</p>
 <figure>
 <img src="./effect_of_blocks.png"
-style="display: block; margin: 0 auto;;width:70.0%"
+style="display: block; margin: 0 auto;;width:100.0%"
 alt="Figure 3: We illustrate the utility of increasing the number of blocks when the projection dimension is fixed. In this case, we use d = 32768." />
 <figcaption aria-hidden="true"><em>Figure 3: We illustrate the utility
 of increasing the number of blocks when the projection dimension is
