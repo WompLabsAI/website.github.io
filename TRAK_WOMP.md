@@ -1,7 +1,7 @@
 ---
 layout: post
 ---
-<h1 align="center">A New SOTA in Data Attribution</h1>
+<h1 align="center">$TRAK_{WOMP}$: A New SOTA in Data Attribution</h1>
 
 ![*Figure 1: $TRAK_{WOMP}$ achieves a new SOTA by nearly an order of magnitude. It consistently makes counterfactual predictions more accurate than $TRAK$ with $75\%$ fewer reference models. Per-block projection dimension is 2048.*](./image.png){width=100% style="display: block; margin: 0 auto;"}
 
