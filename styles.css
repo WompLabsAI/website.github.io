@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #fff;
-    background-color: #000;
+    background-color: #F4F4F4;
+    color: #07000e;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -26,4 +26,14 @@ body {
     color: #f4f4f4;
     padding: 2px 4px;
     border-radius: 3px;
+  }
+
+  a {
+    /* color: #8FCBE0; */
+    color: #27A2B4;
+  }
+
+  .MathJax_Display, .MJXc-display, .MathJax_SVG_Display {
+    overflow-x: auto;
+    overflow-y: hidden;
   }

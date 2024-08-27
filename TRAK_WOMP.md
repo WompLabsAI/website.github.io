@@ -56,7 +56,7 @@ We show that this is not entirely the case. In fact, a large portion of the erro
 
 To reduce this degradation in accuracy, one can increase the projection dimension. But, the TRAK paper shows there is an optimal projection dimension, beyond which performance starts to degrade. While we expect higher-dimensional representations to be less lossy, the issue comes from the inverse Hessian approximation $(\Phi_m^T\Phi_m)^{-1}$. As dimensionality increases, the number of spurious correlations grows. But, a small tweak to the setup fixes this problem.
 
-## TRAK With Optimally Modified Projections (WOMP)$\ _{haha,\ see\ what\ we\ did\ there}$
+## TRAK With Optimally Modified Projections (WOMP)$\ _{\textit{haha,\ see\ what\ we\ did\ there}}$
 
 We modify TRAK by decomposing the projected gradients into blocks. In doing so, we produce what resembles multiple checkpoints from a single backward pass. For example, one checkpoint projected to $d=4096$ can also be treated as $4$ different $d_{batch}=1024$ checkpoints. The result is the following formulation:
 
@@ -76,7 +76,7 @@ $$\tau_{TRAK_{WOMP}}(z,S) := S(\frac{1}{M^2}(\sum_{m=1}^M Q_m)*(\sum_{m=1}^M\phi
 
 Our simple change allows us to increase the projection dimension, thereby achieving higher resolution representations, without sacrificing the accuracy of the Hessian approximation. What is nice about this setup is it introduces no additional backward passes per reference model.
 
-$$This\ lets\ us\ make\ better\ predictions\ without\ multi-million\ dollar\ donations\ to\ NVIDIA!$$
+<p style="text-align: center;"><i>This lets us make better predictions without multi-million dollar donations to NVIDIA!</i></p>
 
 ## Evaluating $TRAK_{WOMP}$
 

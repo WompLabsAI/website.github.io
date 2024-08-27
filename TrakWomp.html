@@ -28,7 +28,8 @@
 </head>
 <body>
 <h1 align="center">
-A New SOTA in Data Attribution
+<span class="math inline">\(TRAK_{WOMP}\)</span>: A New SOTA in Data
+Attribution
 </h1>
 <figure>
 <img src="./image.png"
@@ -41,12 +42,36 @@ more accurate than <span class="math inline">\(TRAK\)</span> with <span
 class="math inline">\(75\%\)</span> fewer reference models. Per-block
 projection dimension is 2048.</em></figcaption>
 </figure>
-<h3
-id="in-this-post-we-outline-our-method-trak-w_ith-o_ptimally-m_odified-p_rojections-which-sets-a-new-sota-for-predicting-the-downstream-effects-of-dataset-changes">In
-this post we outline our method, <span class="math inline">\(TRAK\
-W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}\)</span>, which sets
-a new SOTA for predicting the downstream effects of dataset
-changes!</h3>
+<p><strong>In this post we outline our method, <span
+class="math inline">\(TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\
+P_{rojections}\)</span>, which sets a new SOTA for predicting the
+downstream effects of dataset changes!</strong></p>
+<h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#warmup">Warmup</a>
+<ul>
+<li><a href="#the-linear-datamodeling-score-lds">The Linear Datamodeling
+Score (LDS)</a></li>
+<li><a href="#trak">TRAK</a></li>
+<li><a href="#random-projections-and-the-jl-lemma">Random Projections
+and the JL Lemma</a></li>
+<li><a href="#projection-dimension-and-the-h-1-approximation">Projection
+Dimension and the <span class="math inline">\(H^{-1}\)</span>
+Approximation</a></li>
+</ul></li>
+<li><a href="#trak-with-optimally-modified-projections-womp">TRAK With
+Optimally Modified Projections (WOMP)</a>
+<ul>
+<li><a href="#an-equivalent-definition">An Equivalent
+Definition</a></li>
+</ul></li>
+<li><a href="#evaluating-trak_womp">Evaluating TRAK_WOMP</a>
+<ul>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#results">Results</a></li>
+</ul></li>
+<li><a href="#more-to-come">More To Come …</a></li>
+</ul>
 <p>At Womp Labs, we spend all of our time thinking about the way ML
 models use their training data. When a model fails, it would be great to
 pinpoint the source of the problem. When you have many data sources,
@@ -136,9 +161,9 @@ class="math inline">\((\Phi_m^T\Phi_m)^{-1}\)</span>. As dimensionality
 increases, the number of spurious correlations grows. But, a small tweak
 to the setup fixes this problem.</p>
 <h2
-id="trak-with-optimally-modified-projections-womp-_haha-see-what-we-did-there">TRAK
+id="trak-with-optimally-modified-projections-womp-_textithaha-see-what-we-did-there">TRAK
 With Optimally Modified Projections (WOMP)<span class="math inline">\(\
-_{haha,\ see\ what\ we\ did\ there}\)</span></h2>
+_{\textit{haha,\ see\ what\ we\ did\ there}}\)</span></h2>
 <p>We modify TRAK by decomposing the projected gradients into blocks. In
 doing so, we produce what resembles multiple checkpoints from a single
 backward pass. For example, one checkpoint projected to <span
@@ -169,9 +194,10 @@ Q_m)*(\sum_{m=1}^M\phi_{m}(z){\hat{H}_m}^{-1}\Phi_{m}^T),\hat\lambda)\tag{5}\]</
 thereby achieving higher resolution representations, without sacrificing
 the accuracy of the Hessian approximation. What is nice about this setup
 is it introduces no additional backward passes per reference model.</p>
-<p><span class="math display">\[This\ lets\ us\ make\ better\
-predictions\ without\ multi-million\ dollar\ donations\ to\
-NVIDIA!\]</span></p>
+<p style="text-align: center;">
+<i>This lets us make better predictions without multi-million dollar
+donations to NVIDIA!</i>
+</p>
 <h2 id="evaluating-trak_womp">Evaluating <span
 class="math inline">\(TRAK_{WOMP}\)</span></h2>
 <h3 id="setup">Setup</h3>
