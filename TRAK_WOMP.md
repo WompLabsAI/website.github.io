@@ -2,7 +2,7 @@
 layout: post
 # title: Womp Labs
 ---
-<h4 align="center" className="h1-header"> Womp Labs </h4>
+<h4 align="center" className="h1-header"> Womp Labs Blog </h4>
 
 <span class="nav-container">
   <a href="/" class="nav-button nav-back">← Back</a>
