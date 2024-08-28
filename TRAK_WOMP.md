@@ -10,8 +10,7 @@ layout: post
 </span>
 
 <!-- $TRAK_{WOMP}$:  -->
-<h1>$TRAK_{WOMP}$: A New SOTA in Data Attribution</h1>
-<p>Aug 28, 2024 </p>
+<h1 align="center">A New SOTA in Data Attribution</h1>
 
 ![](./image.png){width=90% style="display: block; margin: 0 auto;"}
 
@@ -28,7 +27,7 @@ In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P
 - [Evaluating $TRAK_{WOMP}$](#evaluating-trak_womp)
 	- [Setup](#setup)
 	- [Results](#results)
-- [More To Come ...](#more-to-come)
+- [More To Come](#more-to-come)
 
 At Womp Labs, we spend all of our time thinking about the way ML models use their training data. When a model fails, it would be great to pinpoint the source of the problem. When you have many data sources, you'd like to know if only one of them was doing the heavy lifting.
 
@@ -66,7 +65,8 @@ We show that this is not entirely the case. In fact, a large portion of the erro
 
 To reduce this degradation in accuracy, one can increase the projection dimension. But, the TRAK paper shows there is an optimal projection dimension, beyond which performance starts to degrade. While we expect higher-dimensional representations to be less lossy, the issue comes from the inverse Hessian approximation $(\Phi_m^T\Phi_m)^{-1}$. As dimensionality increases, the number of spurious correlations grows. But, a small tweak to the setup fixes this problem.
 
-## TRAK With Optimally Modified Projections (WOMP)$\ _{\textit{haha,\ see\ what\ we\ did\ there}}$
+## TRAK With Optimally Modified Projections (WOMP)
+<!-- \{\textit{haha,\ see\ what\ we\ did\ there}} -->
 
 We modify TRAK by decomposing the projected gradients into blocks. In doing so, we produce what resembles multiple checkpoints from a single backward pass. For example, one checkpoint projected to $d=4096$ can also be treated as $4$ different $d_{batch}=1024$ checkpoints. The result is the following formulation:
 
@@ -104,8 +104,10 @@ In most settings it is not feasible to retrain multiple models. As a result, the
 
 So far, we have shown results when per-block projection dimension was fixed. However, we know this requires $B$ times more storage. In some cases there can be storage constraints as well. In *Figure 3*, we fix the total projection dimension, $d$, and vary $B$. Our results show that not only is $TRAK_{WOMP}$ superior on a fixed compute budget, it is better on a fixed storage budget as well.
 
-## More To Come ...
+## More To Come
 
 We know these results are on a small scale model, but we have more to share soon on billion(s) parameter models and internet scale datasets. We believe we can eliminate the *hope* and *guesswork* when training large models. If you agree and are interested in collaborating or joining the team, please reach us at [contact@womplabs.ai](mailto:contact@womplabs.ai)! If you would like to stay up to date on our work, [sign up here](https://forms.gle/vzDzFeeW4d9jFjRJ7).
 
 See you next time 🙂
+
+<p align="right">Aug 28, 2024 </p>

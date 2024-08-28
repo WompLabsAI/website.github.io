@@ -44,13 +44,9 @@ Womp Labs Blog
 <a href="https://docs.google.com/forms/d/e/1FAIpQLScxKIcFz0GRCF0wGMSk1skCx0w46_UbddlRK_locv99cHj0aw/viewform" class="nav-button nav-next">Next
 →</a> </span></p>
 <!-- $TRAK_{WOMP}$:  -->
-<h1>
-<span class="math inline">\(TRAK_{WOMP}\)</span>: A New SOTA in Data
-Attribution
+<h1 align="center">
+A New SOTA in Data Attribution
 </h1>
-<p>
-Aug 28, 2024
-</p>
 <p><img src="./image.png"
 style="display: block; margin: 0 auto;;width:90.0%" /></p>
 <p>In this post we outline our method, <span class="math inline">\(TRAK\
@@ -81,7 +77,7 @@ class="math inline">\(TRAK_{WOMP}\)</span></a>
 <li><a href="#setup">Setup</a></li>
 <li><a href="#results">Results</a></li>
 </ul></li>
-<li><a href="#more-to-come">More To Come …</a></li>
+<li><a href="#more-to-come">More To Come</a></li>
 </ul>
 <p>At Womp Labs, we spend all of our time thinking about the way ML
 models use their training data. When a model fails, it would be great to
@@ -171,10 +167,9 @@ comes from the inverse Hessian approximation <span
 class="math inline">\((\Phi_m^T\Phi_m)^{-1}\)</span>. As dimensionality
 increases, the number of spurious correlations grows. But, a small tweak
 to the setup fixes this problem.</p>
-<h2
-id="trak-with-optimally-modified-projections-womp-_textithaha-see-what-we-did-there">TRAK
-With Optimally Modified Projections (WOMP)<span class="math inline">\(\
-_{\textit{haha,\ see\ what\ we\ did\ there}}\)</span></h2>
+<h2 id="trak-with-optimally-modified-projections-womp">TRAK With
+Optimally Modified Projections (WOMP)</h2>
+<!-- \{\textit{haha,\ see\ what\ we\ did\ there}} -->
 <p>We modify TRAK by decomposing the projected gradients into blocks. In
 doing so, we produce what resembles multiple checkpoints from a single
 backward pass. For example, one checkpoint projected to <span
@@ -257,7 +252,7 @@ vary <span class="math inline">\(B\)</span>. Our results show that not
 only is <span class="math inline">\(TRAK_{WOMP}\)</span> superior on a
 fixed compute budget, it is better on a fixed storage budget as
 well.</p>
-<h2 id="more-to-come">More To Come …</h2>
+<h2 id="more-to-come">More To Come</h2>
 <p>We know these results are on a small scale model, but we have more to
 share soon on billion(s) parameter models and internet scale datasets.
 We believe we can eliminate the <em>hope</em> and <em>guesswork</em>
@@ -267,5 +262,8 @@ href="mailto:contact@womplabs.ai">contact@womplabs.ai</a>! If you would
 like to stay up to date on our work, <a
 href="https://forms.gle/vzDzFeeW4d9jFjRJ7">sign up here</a>.</p>
 <p>See you next time 🙂</p>
+<p align="right">
+Aug 28, 2024
+</p>
 </body>
 </html>
