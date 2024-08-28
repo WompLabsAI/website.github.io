@@ -13,11 +13,11 @@ layout: post
 <h1>$TRAK_{WOMP}$: A New SOTA in Data Attribution</h1>
 <p>Aug 28, 2024 </p>
 
-![](./image.png){width=100% style="display: block; margin: 0 auto;"}
+![](./image.png){width=90% style="display: block; margin: 0 auto;"}
 
 In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes!
 
-# Table of Contents
+## Table of Contents
 - [Warmup](#warmup)
 	- [The Linear Datamodeling Score (LDS)](#the-linear-datamodeling-score-lds)
 	- [TRAK](#trak)
@@ -104,7 +104,7 @@ In most settings it is not feasible to retrain multiple models. As a result, the
 
 So far, we have shown results when per-block projection dimension was fixed. However, we know this requires $B$ times more storage. In some cases there can be storage constraints as well. In *Figure 3*, we fix the total projection dimension, $d$, and vary $B$. Our results show that not only is $TRAK_{WOMP}$ superior on a fixed compute budget, it is better on a fixed storage budget as well.
 
-## Future Work
+## More To Come ...
 
 We know these results are on a small scale model, but we have more to share soon on billion(s) parameter models and internet scale datasets. We believe we can eliminate the *hope* and *guesswork* when training large models. If you agree and are interested in collaborating or joining the team, please reach us at [contact@womplabs.ai](mailto:contact@womplabs.ai)! If you would like to stay up to date on our work, [sign up here](https://forms.gle/vzDzFeeW4d9jFjRJ7).
 
