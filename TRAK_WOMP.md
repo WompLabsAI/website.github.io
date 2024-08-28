@@ -104,7 +104,7 @@ In most settings it is not feasible to retrain multiple models. As a result, the
 
 So far, we have shown results when per-block projection dimension was fixed. However, we know this requires $B$ times more storage. In some cases there can be storage constraints as well. In *Figure 3*, we fix the total projection dimension, $d$, and vary $B$. Our results show that not only is $TRAK_{WOMP}$ superior on a fixed compute budget, it is better on a fixed storage budget as well.
 
-## More To Come ...
+## Future Work
 
 We know these results are on a small scale model, but we have more to share soon on billion(s) parameter models and internet scale datasets. We believe we can eliminate the *hope* and *guesswork* when training large models. If you agree and are interested in collaborating or joining the team, please reach us at [contact@womplabs.ai](mailto:contact@womplabs.ai)! If you would like to stay up to date on our work, [sign up here](https://forms.gle/vzDzFeeW4d9jFjRJ7).
 
