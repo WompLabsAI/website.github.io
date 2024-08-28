@@ -10,7 +10,7 @@ layout: post
 </span>
 
 <!-- $TRAK_{WOMP}$:  -->
-<h1>A New SOTA in Data Attribution</h1>
+<h1>$TRAK_{WOMP}$: A New SOTA in Data Attribution</h1>
 <p>Aug 28, 2024 </p>
 
 ![](./image.png){width=100% style="display: block; margin: 0 auto;"}
