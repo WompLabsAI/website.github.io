@@ -1,6 +1,6 @@
 ---
 layout: post
-# title: Womp Labs
+# title: A New SOTA in Data Attribution
 ---
 <h4 align="center" className="h1-header"> Womp Labs Blog </h4>
 
@@ -24,7 +24,7 @@ In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P
 	- [Projection Dimension and the $H^{-1}$ Approximation](#projection-dimension-and-the-h-1-approximation)
 - [TRAK With Optimally Modified Projections (WOMP)](#trak-with-optimally-modified-projections-womp)
 	- [An Equivalent Definition](#an-equivalent-definition)
-- [Evaluating $TRAK_{WOMP}$](#evaluating-trak_womp)
+- [Evaluating $TRAK_{WOMP}$](#evaluating-A New SOTA in Data Attribution)
 	- [Setup](#setup)
 	- [Results](#results)
 - [More To Come](#more-to-come)
