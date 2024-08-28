@@ -37,3 +37,23 @@ body {
     overflow-x: auto;
     overflow-y: hidden;
   }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .nav-button {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #07000e;
+    font-family: monospace;
+  }
+
+  .nav-back {
+    margin-right: auto;
+  }
+  .nav-next {
+    margin-left: auto;
+  }

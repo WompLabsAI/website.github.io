@@ -27,6 +27,10 @@
   type="text/javascript"></script>
 </head>
 <body>
+<p><span class="nav-container">
+<a href="/" class="nav-button nav-back">← Back</a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScxKIcFz0GRCF0wGMSk1skCx0w46_UbddlRK_locv99cHj0aw/viewform" class="nav-button nav-next">Next
+→</a> </span></p>
 <h1 align="center">
 <span class="math inline">\(TRAK_{WOMP}\)</span>: A New SOTA in Data
 Attribution
@@ -35,11 +39,7 @@ Attribution
 style="display: block; margin: 0 auto;;width:100.0%" /></p>
 <p>In this post we outline our method, <span class="math inline">\(TRAK\
 W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}\)</span>, which sets
-a new SOTA for predicting the downstream effects of dataset changes!
-<span class="math inline">\(TRAK_{WOMP}\)</span> achieves a new SOTA by
-nearly an order of magnitude, consistently making counterfactual
-predictions more accurate than <span class="math inline">\(TRAK\)</span>
-with 75% fewer reference models.</p>
+a new SOTA for predicting the downstream effects of dataset changes!</p>
 <h1 id="table-of-contents">Table of Contents</h1>
 <ul>
 <li><a href="#warmup">Warmup</a>
@@ -59,7 +59,8 @@ Optimally Modified Projections (WOMP)</a>
 <li><a href="#an-equivalent-definition">An Equivalent
 Definition</a></li>
 </ul></li>
-<li><a href="#evaluating-trak_womp">Evaluating TRAK_WOMP</a>
+<li><a href="#evaluating-trak_womp">Evaluating <span
+class="math inline">\(TRAK_WOMP\)</span></a>
 <ul>
 <li><a href="#setup">Setup</a></li>
 <li><a href="#results">Results</a></li>
@@ -232,13 +233,14 @@ fixed. In this case, we use <span class="math inline">\(d =
 32768\)</span>.</em></figcaption>
 </figure>
 <p>So far, we have shown results when per-block projection dimension was
-fixed. However, we know this requires <span class="math inline">\(B\
-times\)</span> more storage. In some cases there can be storage
-constraints as well. In <em>Figure 3</em>, we fix the total projection
-dimension, <span class="math inline">\(d\)</span>, and vary <span
-class="math inline">\(B\)</span>. Our results show that not only is
-<span class="math inline">\(TRAK_{WOMP}\)</span> superior on a fixed
-compute budget, it is better on a fixed storage budget as well.</p>
+fixed. However, we know this requires <span
+class="math inline">\(B\)</span> times more storage. In some cases there
+can be storage constraints as well. In <em>Figure 3</em>, we fix the
+total projection dimension, <span class="math inline">\(d\)</span>, and
+vary <span class="math inline">\(B\)</span>. Our results show that not
+only is <span class="math inline">\(TRAK_{WOMP}\)</span> superior on a
+fixed compute budget, it is better on a fixed storage budget as
+well.</p>
 <h2 id="more-to-come">More To Come …</h2>
 <p>We know these results are on a small scale model, but we have more to
 share soon on billion(s) parameter models and internet scale datasets.

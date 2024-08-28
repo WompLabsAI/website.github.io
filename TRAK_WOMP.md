@@ -1,11 +1,17 @@
 ---
 layout: post
 ---
+
+<span class="nav-container">
+  <a href="/" class="nav-button nav-back">← Back</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScxKIcFz0GRCF0wGMSk1skCx0w46_UbddlRK_locv99cHj0aw/viewform" class="nav-button nav-next">Next →</a>
+</span>
+
 <h1 align="center">$TRAK_{WOMP}$: A New SOTA in Data Attribution</h1>
 
 ![](./image.png){width=100% style="display: block; margin: 0 auto;"}
 
-In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes! $TRAK_{WOMP}$ achieves a new SOTA by nearly an order of magnitude, consistently making counterfactual predictions more accurate than $TRAK$ with 75% fewer reference models.
+In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P_{rojections}$, which sets a new SOTA for predicting the downstream effects of dataset changes!
 
 # Table of Contents
 - [Warmup](#warmup)
@@ -15,7 +21,7 @@ In this post we outline our method, $TRAK\ W_{ith}\ O_{ptimally}\ M_{odified}\ P
 	- [Projection Dimension and the $H^{-1}$ Approximation](#projection-dimension-and-the-h-1-approximation)
 - [TRAK With Optimally Modified Projections (WOMP)](#trak-with-optimally-modified-projections-womp)
 	- [An Equivalent Definition](#an-equivalent-definition)
-- [Evaluating TRAK_WOMP](#evaluating-trak_womp)
+- [Evaluating $TRAK_WOMP$](#evaluating-trak_womp)
 	- [Setup](#setup)
 	- [Results](#results)
 - [More To Come ...](#more-to-come)
