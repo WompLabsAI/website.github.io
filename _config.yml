@@ -1,1 +1,7 @@
-markdown: kramdown
+# markdown: kramdown
+gems:
+  - jekyll-pandoc
+markdown: Pandoc
+pandoc:
+  extensions:
+    - mathjax

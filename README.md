@@ -4,3 +4,5 @@ md -> html:
 local server:
 `bundle exec jekyll serve
 `
+ruby updates
+`gem install`
