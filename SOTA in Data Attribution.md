@@ -53,7 +53,7 @@ Just over a year ago, a lab at MIT introduced [TRAK](https://arxiv.org/abs/2303.
 
 $$\tau_{TRAK}(z,S) := S(\frac{1}{M^2}(\sum_{m=1}^M Q_m)*(\sum_{m=1}^M\phi_m(z)(\Phi_m^T\Phi_m)^{-1}\Phi_m^T),\hat\lambda)\tag{2}$$
 
-where $z$ is an example of interest, $M$ is the number of reference models used, $\phi$ is a random projection of $\nabla_\theta f(z)$, $\Phi$ is the stacked matrix of $\phi(x)$ for all training examples $x$, $Q$ is the diagonal matrix of $1-p_i$ with $p_i$ being the predicted correct-class probability, and $S$ is a soft threshold function with threshold $\hat\lambda$.
+where $z$ is an example of interest, $M$ is the number of reference models used, $\phi$ is a random projection of $\nabla_\theta f(z)$, $\Phi$ is the stacked matrix of $\phi(x)$ for all training examples $x$, $Q$ is the diagonal matrix of $1-p_i$ with $p_i$ being the predicted correct-class probability of $x_i$ at $\theta^*$, and $S$ is a soft threshold function with threshold $\hat\lambda$.
 
 ### Random Projections and the JL Lemma
 
