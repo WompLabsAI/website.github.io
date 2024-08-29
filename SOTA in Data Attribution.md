@@ -43,7 +43,7 @@ A core goal is to accurately predict the outcome of training on some dataset wit
 
 $$LDS(\tau,z):=\rho(f(z,\theta^*(D_j)):j\in[m],{g_\tau(z,D_j;D):j\in[m]})\tag{1}$$
 
-where $D$ is the training set, $f$ is the output of model $\theta^*$, trained on $D_j\subset D$, on an example of interest $z$, $m$ is number of evaluation subsets, and $g_\tau$ is the output prediction made by attribution method $\tau$. In simpler terms, we are trying to answer the following question:
+where $D$ is the training set, $f$ is the output of model $\theta^*$, trained on $D_j\subset D$, on an example of interest $z$, $m$ is number of evaluation subsets, $g_\tau$ is the output prediction made by attribution method $\tau$, and $\rho$ is the spearman correlation. In simpler terms, we are trying to answer the following question:
 
 $$How\ accurately\ can\ we\ predict\ which\ dataset\ is\ better\ for\ learning\ example\ z?$$
 
@@ -53,7 +53,7 @@ Just over a year ago, a lab at MIT introduced [TRAK](https://arxiv.org/abs/2303.
 
 $$\tau_{TRAK}(z,S) := S(\frac{1}{M^2}(\sum_{m=1}^M Q_m)*(\sum_{m=1}^M\phi_m(z)(\Phi_m^T\Phi_m)^{-1}\Phi_m^T),\hat\lambda)\tag{2}$$
 
-where $z$ is an example of interest, $M$ is the number of reference models used, $\phi$ is a random projection of $\nabla_\theta f(z)$, $\Phi$ is the stacked matrix of $\phi(x)$ for all training examples $x$, $Q$ is the diagonal matrix of $1-p_i$, and $S$ is a soft threshold function with threshold $\hat\lambda$.
+where $z$ is an example of interest, $M$ is the number of reference models used, $\phi$ is a random projection of $\nabla_\theta f(z)$, $\Phi$ is the stacked matrix of $\phi(x)$ for all training examples $x$, $Q$ is the diagonal matrix of $1-p_i$ with $\p_i$ being the predicted correct-class probability, and $S$ is a soft threshold function with threshold $\hat\lambda$.
 
 ### Random Projections and the JL Lemma
 

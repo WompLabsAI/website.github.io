@@ -136,9 +136,10 @@ class="math display">\[LDS(\tau,z):=\rho(f(z,\theta^*(D_j)):j\in[m],{g_\tau(z,D_
 class="math inline">\(\theta^*\)</span>, trained on <span
 class="math inline">\(D_j\subset D\)</span>, on an example of interest
 <span class="math inline">\(z\)</span>, <span
-class="math inline">\(m\)</span> is number of evaluation subsets, and
-<span class="math inline">\(g_\tau\)</span> is the output prediction
-made by attribution method <span class="math inline">\(\tau\)</span>. In
+class="math inline">\(m\)</span> is number of evaluation subsets, <span
+class="math inline">\(g_\tau\)</span> is the output prediction made by
+attribution method <span class="math inline">\(\tau\)</span>, and <span
+class="math inline">\(\rho\)</span> is the spearman correlation. In
 simpler terms, we are trying to answer the following question:</p>
 <p><span class="math display">\[How\ accurately\ can\ we\ predict\
 which\ dataset\ is\ better\ for\ learning\ example\ z?\]</span></p>
@@ -161,9 +162,11 @@ f(z)\)</span>, <span class="math inline">\(\Phi\)</span> is the stacked
 matrix of <span class="math inline">\(\phi(x)\)</span> for all training
 examples <span class="math inline">\(x\)</span>, <span
 class="math inline">\(Q\)</span> is the diagonal matrix of <span
-class="math inline">\(1-p_i\)</span>, and <span
-class="math inline">\(S\)</span> is a soft threshold function with
-threshold <span class="math inline">\(\hat\lambda\)</span>.</p>
+class="math inline">\(1-p_i\)</span> with <span
+class="math inline">\(\p_i\)</span> being the predicted correct-class
+probability, and <span class="math inline">\(S\)</span> is a soft
+threshold function with threshold <span
+class="math inline">\(\hat\lambda\)</span>.</p>
 <h3 id="random-projections-and-the-jl-lemma">Random Projections and the
 JL Lemma</h3>
 <p>One of the understood sources of error in the TRAK formulation is the
